@@ -2,11 +2,11 @@ import axios from 'axios';
 
 async function fetchData(props) {
     console.log(props);
-    const jobDesc = props.jobDesc;
+    const jobDesc = props.description;
     const resume = props.resume;
+    var data = await axios.get(`http://127.0.0.1:5000/Generate_Resume/${jobDesc}/${resume}`);
+    //var data = {data: {resume: "hi", jobDesc: "lollers"}};
 
-    //var data = await axios.get(`https://localhost/5001/${props.grade}`);
-    var data = {data: {resume: "hi", jobDesc: "lollers"}};
     console.log(data);
     return data.data;
 }
@@ -27,7 +27,7 @@ export default async function BuildResume(props){
     if (results.resume != undefined && results.resume != '') {
 
         updatedResume = await fetchData(results);
-        console.log(updatedResume.resume);
+        console.log(updatedResume);
     }
 
     return (
@@ -74,7 +74,7 @@ export default async function BuildResume(props){
                 </div>
             </div>
         </div>
-        <p className='text-gray-900 text-xl'>{updatedResume != undefined ? updatedResume.resume : "" }</p>
+        <p className='text-gray-900 text-xl'>{updatedResume != undefined ? updatedResume : "" }</p>
         </div>
     )
 }
