@@ -4,11 +4,13 @@ async function fetchData(props) {
     console.log(props);
     const jobDesc = props.description;
     const resume = props.resume;
-    var data = await axios.get(`http://127.0.0.1:5000/Generate_Resume/${jobDesc}/${resume}`);
-    //var data = {data: {resume: "hi", jobDesc: "lollers"}};
 
-    console.log(data);
-    return data.data;
+    var data = await axios.post('http://127.0.0.1:5000/Generate_Resume', {
+      jobDesc: jobDesc,
+      resume: resume
+    });
+
+    return data.data.updated_resume;
 }
 
 export default async function BuildResume(props){
@@ -66,7 +68,7 @@ export default async function BuildResume(props){
                                     type="submit"
                                     className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
                                 >
-                                    Send Message
+                                    Submit
                                 </button>
                             </div>
                             <p className="text-base text-center text-gray-400" id="result"></p>
