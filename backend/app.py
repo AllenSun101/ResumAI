@@ -16,6 +16,17 @@ app.config["JSON_SORT_KEYS"] = False
 CORS(app)
 
 
+@app.route('/Fetch_Profile', methods=['POST'])
+def fetch_profile():
+    pass
+
+
+@app.route('/Profile_Changes', methods=['POST'])
+
+
+@app.route('/Consult_Resume', methods=['POST'])
+
+
 @app.route('/Generate_Resume', methods=['POST'])
 def generate_resume():
      
