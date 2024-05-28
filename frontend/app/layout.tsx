@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Raleway } from 'next/font/google'
+import {ReactQueryProvider} from './ReactQueryProvider'
 //import { Analytics } from '@vercel/analytics/react';
 
 import Navbar from './Navbar'
@@ -20,13 +21,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={raleway.className}>
-        <Navbar />
-        {children}
-        {/*<Analytics />*/}
-        <Footer />
-        </body>
-    </html>
+    <ReactQueryProvider>
+			<html lang="en" className="bg-white">
+				<body className={raleway.className}>
+					<Navbar />
+					{children}
+          {/*<Analytics />*/}
+					<Footer />
+				</body>
+			</html>
+		</ReactQueryProvider>
   )
 }
