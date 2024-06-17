@@ -3,33 +3,35 @@ import axios from 'axios';
 async function fetchData(props) {
     console.log(props);
     const jobDesc = props.description;
-    const resume = props.resume;
+    const user = props.user;
 
     var data = await axios.post('http://127.0.0.1:5000/Generate_Resume', {
       jobDesc: jobDesc,
-      resume: resume
+      user: user
     });
 
-    return data.data.updated_resume;
+    return data.data.resume;
 }
 
 export default async function BuildResume(props){
 
-    // Paste Job Description
-
-    // Paste Resume
+    // Paste Job Description, use Profile
 
     console.log(props);
 
-    var results = props.searchParams;
+    var user = "Allen";
+
+    var submission = {};
+    submission.description = props.searchParams.description;
+    submission.user = user;
     //console.log(results);
 
-    var updatedResume;
+    var resume;
 
-    if (results.resume != undefined && results.resume != '') {
+    if (submission.description != undefined && submission.description != '') {
 
-        updatedResume = await fetchData(results);
-        console.log(updatedResume);
+        resume = await fetchData(submission);
+        console.log(resume);
     }
 
     return (
@@ -53,17 +55,6 @@ export default async function BuildResume(props){
                                 ></textarea>
                             </div>
                             <div className="mb-6">
-                                <label htmlFor="message" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Paste Resume</label>
-                                <textarea
-                                    rows="5"
-                                    name="resume"
-                                    id="resume"
-                                    placeholder="Resume"
-                                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                                    required
-                                ></textarea>
-                            </div>
-                            <div className="mb-6">
                                 <button
                                     type="submit"
                                     className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
@@ -76,7 +67,7 @@ export default async function BuildResume(props){
                 </div>
             </div>
         </div>
-        <p className='text-gray-900 text-xl'>{updatedResume != undefined ? updatedResume : "" }</p>
+        <p className='text-gray-900 text-xl'>{resume != undefined ? resume : "" }</p>
         </div>
     )
 }

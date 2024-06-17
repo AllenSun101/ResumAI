@@ -127,7 +127,6 @@ export default function Profile(){
     // Add support for deleting categories
     return(
         <div className='bg-white mx-auto py-32 md:px-24 px-8'>
-            <p>{data.fields.Coursework}</p>
             <div className='mb-6'>
                 <h1 className='text-4xl font-bold text-center mb-12'>My Profile: {profileName}</h1>
                 <p className='text-lg mb-6'>Customize your personal profile for tailored resumes! We have provided a few 
