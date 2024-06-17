@@ -13,7 +13,7 @@ export default function Login() {
                                     <p className="label-text text-lg">Email</p>
                                 </label>
                             </div>
-                            <input type="email" name="" placeholder="Insert Email" className="input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700" required />
+                            <input type="email" name="" placeholder="Enter Email" className="input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700" required />
                         </div>
 
                         <div className="form-control w-full max-w-xl mb-6">
@@ -22,7 +22,7 @@ export default function Login() {
                                     <p className="label-text text-lg">Password</p>
                                 </label>
                             </div>
-                            <input type="password" name="" placeholder="Insert Password" className="input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700" required />
+                            <input type="password" name="" placeholder="Enter Password" className="input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700" required />
                         </div>
 
                         <label className="label text-center">
