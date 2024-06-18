@@ -21,7 +21,9 @@ export default function Home() {
                 </div>
             </div>
         </div>
-		<p>Overview of ResumAI- what does it allow?</p>
+        <div className="lg:px-24 px-8 text-lg mt-12">
+          <p>ResumAI provides artificial intelligence-based solutions for creating effective employment applications.</p>
+        </div>
 		<p>Rundown of features and steps/procedures - create profile, generate</p>
     </main>
   );
