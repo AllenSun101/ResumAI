@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 const navigation = [
     { name: 'Home', href: '/' },
@@ -22,9 +22,15 @@ export default function Navbar(){
 		<div className="bg-black">
 			<header className="absolute inset-x-0 top-0 z-50">
 				<nav className="flex items-center justify-between p-6 lg:px-6" aria-label="Global">
-					<div className="flex lg:flex-1">
+                    <div className="flex lg:flex-1">
 						<Link href="/" className="-m-1.5 p-1.5">
 							<span className="sr-only">ResumAI</span>
+							<Image
+								src="/Logo.png"
+								alt="ResumAI Logo"
+								width="140"
+								height="70"
+							/>
 						</Link>
 					</div>
 					<div className="flex lg:hidden">
