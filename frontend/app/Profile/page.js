@@ -32,14 +32,17 @@ export default function Profile(){
     if(profileName == undefined){
         return(
             <div className='bg-white mx-auto py-32 md:px-24 px-8'>
-                <h1 className='text-4xl font-bold text-center mb-[25vh]'>My Profile</h1>
+                <div className="flex justify-center mb-[25vh]">
+                    <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> My Profile </h2>
+                </div>
                 <p className='text-lg text-center mb-24'>Please login or create an account to access your profile!</p>
                 <ul className='text-lg text-center'>
                     <li className='mb-4'>
-                        <Link href="/Login">Login</Link>
+                        <Link className='link text-black-400 focus:outline-none focus:underline focus:text-black-500 dark:focus:border-gray-800' href="/Login">Login</Link>
                     </li>
                     <li>
-                        <Link href="/SignUp">Don't have an account? Sign Up</Link>
+                        <span>Don't have an account? </span>
+                        <Link className='link text-black-400 focus:outline-none focus:underline focus:text-black-500 dark:focus:border-gray-800' href="/SignUp">Sign Up</Link>
                     </li>
                 </ul>
             </div>
@@ -127,8 +130,10 @@ export default function Profile(){
     // Add support for deleting categories
     return(
         <div className='bg-white mx-auto py-32 md:px-24 px-8'>
-            <div className='mb-6'>
-                <h1 className='text-4xl font-bold text-center mb-12'>My Profile: {profileName}</h1>
+            <div className='mb-12'>
+                <div className="flex justify-center mb-12">
+                    <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> My Profile: {profileName} </h2>
+                </div>
                 <p className='text-lg mb-6'>Customize your personal profile for tailored resumes! We have provided a few 
                     common sections commonly found on resumes, but you can add custom fields as well!
                 </p>
@@ -138,11 +143,14 @@ export default function Profile(){
             </div>
 
             <form onSubmit={handleSubmit}>
-                <div className='text-center text-lg'>
-                    <h2 className='text-xl font-semibold'>Personal Information</h2>
+                <div className='text-lg lg:mx-24 mb-12'>
+                    <div className="flex mb-4">
+                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Personal Information </h2>
+                    </div>
                     <div className='mb-4'>
                         <label className='mr-4'>Name:</label>
                         <input
+                            className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                             type="text"
                             id="Name"
                             name="Name"
@@ -153,6 +161,7 @@ export default function Profile(){
                     <div className='mb-4'>
                         <label className='mr-4'>GitHub:</label>
                         <input
+                            className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                             type="text"
                             id="GitHub"
                             name="GitHub"
@@ -163,6 +172,7 @@ export default function Profile(){
                     <div className='mb-4'>
                         <label className='mr-4'>LinkedIn:</label>
                         <input
+                            className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                             type="text"
                             id="LinkedIn"
                             name="LinkedIn"
@@ -173,6 +183,7 @@ export default function Profile(){
                     <div className='mb-4'>
                         <label className='mr-4'>Portfolio:</label>
                         <input
+                            className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                             type="text"
                             id="Portfolio"
                             name="Portfolio"
@@ -183,9 +194,12 @@ export default function Profile(){
                 </div>
 
                 {Object.entries(fields).map(([name, value]) => (
-                    <div key={name} style={{ marginBottom: '1em' }}>
-                    <h2 className='text-xl font-semibold'> {name} </h2>
+                    <div key={name} style={{ marginBottom: '1em' }} className='lg:mx-24'>
+                    <div className="flex mb-4">
+                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> {name} </h2>
+                    </div>
                     <textarea
+                        className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                         name={name}
                         value={value}
                         onChange={handleFieldChange}
@@ -194,23 +208,26 @@ export default function Profile(){
                     </div>
                 ))}
 
-                <div>
-                    <label className='mr-4'>Custom Category:</label>
+                <div className='mt-12'>
+                    <div className="flex mb-2">
+                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Custom Category </h2>
+                    </div>                    
                     <input
+                        className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                         type="text"
                         id="customField"
                         value={customField}
                         onChange={handleCustomFieldChange}
                     />
-
-                    <button type="button" onClick={handleAddField} className='mx-20 bg-red-950 hover:bg-gray-100 hover:text-black text-white text-lg font-semibold py-2 px-8 rounded-xl mt-6 btn btn-block'>
-                        Add Custom Category
+                
+                    <button type="button" onClick={handleAddField} className='mx-10 bg-purple-700 hover:bg-purple-400 hover:text-white text-white text-lg font-semibold py-2 px-8 rounded-xl mt-6 btn btn-block'>
+                        Add Category
                     </button>
                 </div>
-                <div>
-                    <button type="submit" onClick={handleSubmit} className="bg-red-950 hover:bg-gray-100 hover:text-black text-white text-lg font-semibold py-2 px-8 rounded-xl mt-6 btn btn-block">Save</button>
+                <div className='mt-12'>
+                    <button type="submit" onClick={handleSubmit} className="bg-purple-700 hover:bg-purple-400 hover:text-white text-white text-lg font-semibold py-2 px-8 rounded-xl mt-6 btn btn-block"> Save Changes </button>
                 </div>
-                <div>
+                <div className='mt-4'>
                     {success ? <p className='text-lg'> Successfully Saved! </p> : 
                     <p className='text-lg'> Unsaved Changes </p>}
                 </div>
