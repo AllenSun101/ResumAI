@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PdfGenerator from './PDFGenerator'
 
 async function fetchData(props) {
     console.log(props);
@@ -35,39 +36,37 @@ export default async function BuildResume(props){
     }
 
     return (
-        <div>
-        <div className="flex items-center min-h-screen bg-white dark:bg-gray-900">
+        <div className='pt-32 pb-16 bg-white'>
+        <div className="flex items-center dark:bg-gray-900">
             <div className="container mx-auto">
-                <div className="max-w-md mx-auto my-10 bg-white dark:bg-gray-800 p-5 rounded-md shadow-sm">
-                    <div className="text-center">
-                        <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Build Resume</h1>
-                    </div>
-                        <form id="form">
-                        <div className="mb-6">
-                                <label htmlFor="message" className="block mb-2 text-sm text-gray-600 dark:text-gray-400">Paste Job Description</label>
-                                <textarea
-                                    rows="5"
-                                    name="description"
-                                    id="description"
-                                    placeholder="Job Description"
-                                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                                    required
-                                ></textarea>
-                            </div>
-                            <div className="mb-6">
-                                <button
-                                    type="submit"
-                                    className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                            <p className="text-base text-center text-gray-400" id="result"></p>
-                        </form>
+                <div className="flex justify-center mb-12">
+                  <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Resume Builder </h2>
                 </div>
+                <div className="max-w-lg mx-auto my-10 bg-white dark:bg-gray-800 p-5">
+                  <form id="form">
+                    <div className="mb-6">
+                      <div className="flex mb-4">
+                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Paste Job Description </h2>
+                      </div>
+                      <textarea
+                          rows="10"
+                          name="description"
+                          id="description"
+                          placeholder="Enter Job Description"
+                          className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
+                          required
+                      ></textarea>
+                    </div>
+                    <div className="mb-6 text-center">
+                        <button type="submit" className="bg-purple-700 hover:bg-purple-400 hover:text-white text-white text-lg font-semibold py-2 px-8 rounded-xl btn btn-block"> Submit </button>
+                    </div>
+                    <p className="text-base text-center text-gray-400" id="result"></p>
+                </form>
+              </div>
             </div>
         </div>
         <p className='text-gray-900 text-xl'>{resume != undefined ? resume : "" }</p>
+        <PdfGenerator />
         </div>
     )
 }

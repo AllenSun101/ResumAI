@@ -135,7 +135,7 @@ export default function Profile(){
                     <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> My Profile: {profileName} </h2>
                 </div>
                 <p className='text-lg mb-6'>Customize your personal profile for tailored resumes! We have provided a few 
-                    common sections commonly found on resumes, but you can add custom fields as well!
+                    common sections commonly found on resumes, but you can optionally add custom categories as well!
                 </p>
                 <p className='text-lg'>For each category, add relevant information, especially metrics on your impact! The
                     more information, the better!
@@ -180,7 +180,7 @@ export default function Profile(){
                             onChange={handleProfileChange}
                         />
                     </div>
-                    <div className='mb-4'>
+                    <div className='mb-6'>
                         <label className='mr-4'>Portfolio:</label>
                         <input
                             className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
@@ -191,10 +191,9 @@ export default function Profile(){
                             onChange={handleProfileChange}
                         />
                     </div>
-                </div>
 
                 {Object.entries(fields).map(([name, value]) => (
-                    <div key={name} style={{ marginBottom: '1em' }} className='lg:mx-24'>
+                    <div key={name} style={{ marginBottom: '1em' }}>
                     <div className="flex mb-4">
                         <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> {name} </h2>
                     </div>
@@ -204,18 +203,20 @@ export default function Profile(){
                         value={value}
                         onChange={handleFieldChange}
                         style={{ marginLeft: '0.5em' }}
+                        rows="5"
                         />
                     </div>
                 ))}
 
                 <div className='mt-12'>
                     <div className="flex mb-2">
-                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Custom Category </h2>
+                        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Add Category </h2>
                     </div>                    
                     <input
                         className='input input-bordered w-full max-w-xl py-2 px-2 rounded-lg border-2 border-purple-700'
                         type="text"
                         id="customField"
+                        placeholder='Enter Custom Category'
                         value={customField}
                         onChange={handleCustomFieldChange}
                     />
@@ -230,6 +231,8 @@ export default function Profile(){
                 <div className='mt-4'>
                     {success ? <p className='text-lg'> Successfully Saved! </p> : 
                     <p className='text-lg'> Unsaved Changes </p>}
+                </div>
+
                 </div>
             </form>
             
