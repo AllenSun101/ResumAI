@@ -28,17 +28,21 @@ app = Flask(__name__)
 app.config["JSON_SORT_KEYS"] = False
 CORS(app)
 
-@app.route('/Fetch_Profile/<profile_name>', methods=['GET'])
-def fetch_profile(profile_name):
-    print(profile_name)
+@app.route('/Fetch_Profile/<profile_email>', methods=['GET'])
+def fetch_profile(profile_email):
+    print(profile_email)
 
     # MongoDB Find Profile and Return
     db = mongo_db_client.Profiles
     profiles_collection = db.Users
-    profile = profiles_collection.find_one({'_id': profile_name})
+    profile = profiles_collection.find_one({'_id': profile_email})
 
     if profile is None:
-        return jsonify({'error': "create profile first"})
+        profile = {"_id":profile_email,
+            "fields":{"Activities":"","Coursework":"","Education":"",
+                   "Professional Experience":"","Skills":""},
+            "profile":{"GitHub":"","LinkedIn":"","Name":"","Portfolio":""},"profileName":""}
+        profiles_collection.insert_one(profile)
     
     print(profile)
 
