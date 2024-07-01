@@ -68,23 +68,14 @@ export default function Profile() {
             My Profile
           </h2>
         </div>
-        <p className="text-lg text-center mb-24">Please login or create an account to access your profile!</p>
+        <p className="text-lg text-center mb-24">Please login to access your profile!</p>
         <ul className="text-lg text-center">
-          <li className="mb-4">
+          <li className="mb-12">
             <Link
               className="link text-black-400 focus:outline-none focus:underline focus:text-black-500 dark:focus:border-gray-800"
               href="/Login"
             >
               Login
-            </Link>
-          </li>
-          <li>
-            <span>Don't have an account? </span>
-            <Link
-              className="link text-black-400 focus:outline-none focus:underline focus:text-black-500 dark:focus:border-gray-800"
-              href="/SignUp"
-            >
-              Sign Up
             </Link>
           </li>
         </ul>

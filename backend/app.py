@@ -107,7 +107,7 @@ def generate_resume():
     profile = profiles_collection.find_one({'_id': user})
 
     if profile is None:
-        return jsonify({'error': "create profile first"})
+        return jsonify({'error': "Insufficient profile information."})
 
     print(profile)    
 
