@@ -75,7 +75,12 @@ def consult_resume():
     print(resume)    
     
     prompt = (
-        "Give thorough and specific suggestions on how this resume could better align with the role description and stand out. Only include advice, especially on specific content (no summary)\n\n"
+        "Give thorough and specific suggestions on how this resume could better align with the role description and stand out. \
+            Only include advice, especially on specific content (no summary).\
+            Please respond in the following format: \
+            1. **Topic** [Advice]\
+            2. **Topic** [Advice]\
+            ... \n\n"
         "Job Description:\n"
         f"{jobDesc}\n\n"
         "Current Resume:\n"

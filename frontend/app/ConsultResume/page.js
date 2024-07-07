@@ -19,12 +19,12 @@ export default async function ConsultResume(props){
 
     var results = props.searchParams;
 
-    var suggestions = "LOLLERS";
+    var suggestions;
+    var splitSuggestions;
 
     if (results.resume != undefined && results.resume != '') {
-
         suggestions = await fetchData(results);
-        console.log(suggestions);
+        splitSuggestions = suggestions.split(/(?=\d+\.\s)/).filter(suggestion => suggestion.trim() !== '');
     }
 
     return (
@@ -75,7 +75,14 @@ export default async function ConsultResume(props){
                 <div className="flex mb-4">
                     <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"> Resume Feedback </h2>
                 </div> 
-                <p className='text-gray-900 text-xl'>{suggestions != undefined ? suggestions : "" }</p>
+                <div>
+                    {splitSuggestions.map((suggestion, index) => (
+                        <div key={index}>
+                            <p className='text-gray-900 text-xl'>{suggestion}</p>
+                            <br></br>
+                        </div>
+                    ))}
+                </div>
             </div> 
             : ""
         }
