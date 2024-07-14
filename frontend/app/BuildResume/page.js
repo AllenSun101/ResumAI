@@ -1,5 +1,5 @@
 import axios from 'axios';
-import PdfGenerator from './PDFGenerator'
+import PDFGenerator from './PDFGenerator'
 import { getServerSession } from 'next-auth/next';
 import Link from 'next/link';
 import { authOptions } from "./auth"
@@ -95,7 +95,7 @@ export default async function BuildResume(props){
             </div>
         </div>
         <p className='text-gray-900 text-xl'>{resume != undefined ? resume : "" }</p>
-        <PdfGenerator />
+        <PDFGenerator resume={resume}/>
         </div>
     )
 }

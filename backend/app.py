@@ -122,19 +122,34 @@ def generate_resume():
     #print(profile_info)
 
     # Extract Profile
-
     prompt = (
-        "Build a resume to fit job description provided, given this profile information. \
-         Highlight key accomplishments, measurable results, and significant contributions. \n\n"
+        "Build a resume to fit the job description provided, using this profile information. \
+         Include as many numbers, accomplishments, and measurable results. \
+         Make any modifications (only making content longer) to the information so that it is conveyed effectively with the job \
+         skills in mind, and try to make it one full page exactly with detailed bullets (at least 600 words). \n\n"
         "Job Description:\n"
         f"{jobDesc}\n\n"
         "Profile:\n"
-        f"{profile}"
+        f"{profile}\n\n"
+        "Please organize the resume using these labels. The [] signifies placeholders. Multiple \
+        **Bullet:** for each **Header:** is encouraged, and multiple **Header:** per **Section:** as well. \
+        Do not add any other label types, and DO NOT ADD NOTES: \
+        **Name:** [Name] \
+        **Email:** [Email] \
+        **LinkedIn:** [LinkedIn] \
+        **GitHub:** [GitHub] \
+        **Portfolio:** [Portfolio] \
+        **Section:** [Content] \
+        **Header:** [Content] \
+        **Date:** [Content] \
+        **Bullet:** [Content] \
+        **Skills:** [Content] \
+        **Technologies:** [Content] \
+        ... \n\n"
     )
 
-    print(prompt)
+    # print(prompt)
 
-    """
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -143,9 +158,10 @@ def generate_resume():
         ]
     )
     
-    resume = completion.choices[0].message.content"""
+    resume = completion.choices[0].message.content
     
-    return jsonify({'resume': "lol"})
+    return jsonify({'resume': resume})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
